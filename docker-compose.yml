@@ -14,25 +14,25 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./db:/var/lib/mysql
+      - mysql-db:/var/lib/mysql
       - ./my_conf:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: laravel
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
-    redis:
-      image: "redis:latest"
-      volumes:
-        - redis-data:/data
-      ports:
-        - 6379:6379
+  redis:
+    image: "redis:latest"
+    volumes:
+      - redis-data:/data
+    ports:
+      - 6379:6379
 
-    adminer:
-      image: adminer
-      restart: always
-      ports:
-        - 9001:8080
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9001:8080
 
   # phpmyadmin:
   #   depends_on:
@@ -56,3 +56,9 @@ services:
     depends_on:
       - php
       - db
+
+volumes:
+  mysql-db:
+    driver: local
+  redis-data:
+    driver: local

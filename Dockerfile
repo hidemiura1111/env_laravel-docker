@@ -1,8 +1,6 @@
-FROM php:7.4-fpm
+FROM php:7.4-fpm-alpine
 
-RUN apt-get update \
-    && apt-get install -y libzip-dev zlib1g-dev unzip \
-    && docker-php-ext-install zip pdo pdo_mysql \
+RUN docker-php-ext-install pdo pdo_mysql \
     && apk add --update git unzip nodejs npm
 
 #Composer install
