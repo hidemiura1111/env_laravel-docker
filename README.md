@@ -86,6 +86,8 @@ docker-compose exec php php artisan migrate
 
 ## Setting for DB and Redis
 
+### src/config/database.php
+
 ```
 'mysql' => [
     'driver' => 'mysql',
