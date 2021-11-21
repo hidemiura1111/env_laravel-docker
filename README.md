@@ -89,52 +89,10 @@ docker-compose exec php php artisan migrate
 ### src/config/database.php
 
 ```
-'mysql' => [
-    'driver' => 'mysql',
-    'url' => env('DATABASE_URL'),
-    'host' => env('DB_HOST', 'db'), // highlight-line
-    'port' => env('DB_PORT', '3306'),
-    'database' => env('DB_DATABASE', 'myapp'), // highlight-line
-    'username' => env('DB_USERNAME', 'root'), // highlight-line
-    'password' => env('DB_PASSWORD', 'root'), // highlight-line
-    'unix_socket' => env('DB_SOCKET', ''),
-    'charset' => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci',
-    'prefix' => '',
-    'prefix_indexes' => true,
-    'strict' => true,
-    'engine' => null,
-    'options' => extension_loaded('pdo_mysql') ? array_filter([
-        PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-    ]) : [],
-],
-
-...
-
 'redis' => [
 
     'client' => env('REDIS_CLIENT', 'predis'),
-
-    'options' => [
-        'cluster' => env('REDIS_CLUSTER', 'redis'),
-        'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-    ],
-
-    'default' => [
-        'url' => env('REDIS_URL'),
-        'host' => env('REDIS_HOST', 'redis'), // highlight-line
-        'password' => env('REDIS_PASSWORD', null),
-        'port' => env('REDIS_PORT', '6379'),
-        'database' => env('REDIS_DB', '0'),
-    ],
-
-    'cache' => [
-        'url' => env('REDIS_URL'),
-        'host' => env('REDIS_HOST', 'redis'), // highlight-line
-        'password' => env('REDIS_PASSWORD', null),
-        'port' => env('REDIS_PORT', '6379'),
-        'database' => env('REDIS_CACHE_DB', '1'),
-    ],
+    ...
 
 ],
 ```
