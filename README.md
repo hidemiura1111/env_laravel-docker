@@ -1,6 +1,7 @@
 # Overview
 
 Simple Laravel environment by Docker and Docker-compose.
+PHP + MySQL + Nginx
 
 Session: Redis
 
