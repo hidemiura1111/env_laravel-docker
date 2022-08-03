@@ -88,18 +88,6 @@ Confirm DB work correctly
 docker-compose exec php php artisan migrate
 ```
 
-## Setting for DB and Redis
-
-### src/config/database.php
-
-```
-'redis' => [
-
-    'client' => env('REDIS_CLIENT', 'predis'),
-    ...
-
-],
-```
 
 ## Access
 
