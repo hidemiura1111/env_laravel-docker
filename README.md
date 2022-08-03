@@ -46,16 +46,12 @@ docker-compose exec php composer create-project --prefer-dist laravel/laravel . 
 docker-compose exec php composer require predis/predis
 ```
 
-~~docker run --rm -v {Current Directly}/src:/app composer create-project --prefer-dist laravel/laravel . "6.\*"~~
-
-## composer update (If already installed)
+### composer install (If you use own code in src/)
 
 ```
 docker-compose exec php composer install
 docker-compose exec php composer require predis/predis
 ```
-
-~~docker run --rm -v {Current Directly}/src:/app composer update ( or install)~~
 
 ## Edit `src/.env` file
 
@@ -83,13 +79,13 @@ docker-compose exec php php artisan key:generate
 
 -> Write down automatically `APP_KEY` in `.env`
 
-Need to change files's authority in case of WSL2
+## Need to change files's authority in case of WSL2
 
 ```
 sudo chown {user_name}:{user_name} /src -R
 ```
 
-Confirm DB work correctly
+## DB Migration
 
 ```
 docker-compose exec php php artisan migrate
@@ -102,7 +98,7 @@ docker-compose exec php php artisan migrate
 | system  | http://127.0.0.1:8080/ |
 | adminer | http://127.0.0.1:9001/ |
 
-Need to change files's authority in docker container, in case of WSL2
+## Need to change files's authority in docker container, in case of WSL2
 
 ```
 docker-compose exec php chown www-data:www-data storage -R
