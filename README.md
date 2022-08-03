@@ -75,6 +75,13 @@ REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
+### Create encryption key
+
+```
+docker-compose exec php php artisan key:generate
+```
+
+-> Write down automatically `APP_KEY` in `.env`
 
 Need to change files's authority in case of WSL2
 
@@ -177,14 +184,6 @@ Also it can be deleted.
 ```
 
 # Troubleshooting
-
-## Create encryption key
-
-```
-docker-compose exec php php artisan key:generate
-```
-
--> Write down automatically `APP_KEY` in `.env`
 
 ## Fail to download files in db
 
