@@ -51,7 +51,8 @@ docker-compose exec php composer require predis/predis
 ## composer update (If already installed)
 
 ```
-docker-compose exec php composer update (or install)
+docker-compose exec php composer install
+docker-compose exec php composer require predis/predis
 ```
 
 ~~docker run --rm -v {Current Directly}/src:/app composer update ( or install)~~
