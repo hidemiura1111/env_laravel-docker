@@ -88,7 +88,6 @@ Confirm DB work correctly
 docker-compose exec php php artisan migrate
 ```
 
-
 ## Access
 
 | Tool    | URL                    |
@@ -133,6 +132,19 @@ docker-compose exec php php artisan migrate
 
 ```
 npm install --save vue-router
+```
+
+## Setting for DB and Redis
+It can be setting in .env, but this method is also possible.
+### src/config/database.php
+
+```
+'redis' => [
+
+    'client' => env('REDIS_CLIENT', 'predis'),
+    ...
+
+],
 ```
 
 ## Confirm Redis works correctly
