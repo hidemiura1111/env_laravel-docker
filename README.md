@@ -46,15 +46,12 @@ docker-compose exec php composer create-project --prefer-dist laravel/laravel . 
 docker-compose exec php composer require predis/predis
 ```
 
-~~docker run --rm -v {Current Directly}/src:/app composer create-project --prefer-dist laravel/laravel . "6.\*"~~
-
-## composer update (If already installed)
+### composer install (If you use own code in src/)
 
 ```
-docker-compose exec php composer update (or install)
+docker-compose exec php composer install
+docker-compose exec php composer require predis/predis
 ```
-
-~~docker run --rm -v {Current Directly}/src:/app composer update ( or install)~~
 
 ## Edit `src/.env` file
 
@@ -68,34 +65,30 @@ DB_PASSWORD=password
 
 SESSION_DRIVER=redis
 
+REDIS_CLIENT=predis
+
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
+### Create encryption key
 
-Need to change files's authority in case of WSL2
+```
+docker-compose exec php php artisan key:generate
+```
+
+-> Write down automatically `APP_KEY` in `.env`
+
+## Need to change files's authority in case of WSL2
 
 ```
 sudo chown {user_name}:{user_name} /src -R
 ```
 
-Confirm DB work correctly
+## DB Migration
 
 ```
 docker-compose exec php php artisan migrate
-```
-
-## Setting for DB and Redis
-
-### src/config/database.php
-
-```
-'redis' => [
-
-    'client' => env('REDIS_CLIENT', 'predis'),
-    ...
-
-],
 ```
 
 ## Access
@@ -105,7 +98,7 @@ docker-compose exec php php artisan migrate
 | system  | http://127.0.0.1:8080/ |
 | adminer | http://127.0.0.1:9001/ |
 
-Need to change files's authority in docker container, in case of WSL2
+## Need to change files's authority in docker container, in case of WSL2
 
 ```
 docker-compose exec php chown www-data:www-data storage -R
@@ -144,6 +137,19 @@ docker-compose exec php php artisan migrate
 npm install --save vue-router
 ```
 
+## Setting for DB and Redis
+It can be setting in .env, but this method is also possible.
+### src/config/database.php
+
+```
+'redis' => [
+
+    'client' => env('REDIS_CLIENT', 'predis'),
+    ...
+
+],
+```
+
 ## Confirm Redis works correctly
 
 ```
@@ -174,14 +180,6 @@ Also it can be deleted.
 ```
 
 # Troubleshooting
-
-## Create encryption key
-
-```
-docker-compose exec php php artisan key:generate
-```
-
--> Write down automatically `APP_KEY` in `.env`
 
 ## Fail to download files in db
 
