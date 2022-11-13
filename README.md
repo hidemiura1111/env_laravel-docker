@@ -82,7 +82,7 @@ docker-compose exec php php artisan key:generate
 ## Need to change files's authority in case of WSL2
 
 ```
-sudo chown {user_name}:{user_name} /src -R
+sudo chown {user_name}:{user_name} src -R
 ```
 
 ## DB Migration
