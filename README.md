@@ -91,6 +91,18 @@ sudo chown {user_name}:{user_name} src -R
 docker-compose exec php php artisan migrate
 ```
 
+## Mailtrap
+- https://mailtrap.io/home
+### .env
+```
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME={Credential Username}
+MAIL_PASSWORD={Credential Password}
+MAIL_ENCRYPTION=tls
+```
+
 ## Access
 
 | Tool    | URL                    |
