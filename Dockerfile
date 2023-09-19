@@ -1,7 +1,7 @@
 FROM php:7.4-fpm-alpine
 
-RUN docker-php-ext-install pdo pdo_mysql \
-    && apk add --update git unzip nodejs npm
+RUN docker-php-ext-install pdo pdo_mysql pcntl \
+  && apk add --update git unzip nodejs npm
 
 # Composer install
 # Version specification: --from=composer:2.1.11

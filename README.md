@@ -143,6 +143,12 @@ docker-compose exec php php artisan migrate
 
 ~~docker exec -it php php artisan ui vue --auth~~
 
+## Laravel Horizon
+```
+docker-compose exec php composer require laravel/horizon
+docker-compose exec php php artisan horizon:install
+```
+
 ## Vue Router
 
 ```
